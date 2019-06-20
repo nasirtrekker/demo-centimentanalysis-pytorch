@@ -13117,14 +13117,7 @@ div#notebook {
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h1 id="Creating-a-Sentiment-Analysis-Web-App">Creating a Sentiment Analysis Web App<a class="anchor-link" href="#Creating-a-Sentiment-Analysis-Web-App">&#182;</a></h1><h2 id="Using-PyTorch-and-SageMaker">Using PyTorch and SageMaker<a class="anchor-link" href="#Using-PyTorch-and-SageMaker">&#182;</a></h2><p><em>Deep Learning Nanodegree Program | Deployment</em></p>
-<hr>
-<p>Now that we have a basic understanding of how SageMaker works we will try to use it to construct a complete project from end to end. Our goal will be to have a simple web page which a user can use to enter a movie review. The web page will then send the review off to our deployed model which will predict the sentiment of the entered review.</p>
-<h2 id="Instructions">Instructions<a class="anchor-link" href="#Instructions">&#182;</a></h2><p>Some template code has already been provided for you, and you will need to implement additional functionality to successfully complete this notebook. You will not need to modify the included code beyond what is requested. Sections that begin with '<strong>TODO</strong>' in the header indicate that you need to complete or implement some portion within them. Instructions will be provided for each section and the specifics of the implementation are marked in the code block with a <code># TODO: ...</code> comment. Please be sure to read the instructions carefully!</p>
-<p>In addition to implementing code, there will be questions for you to answer which relate to the task and your implementation. Each section where you will answer a question is preceded by a '<strong>Question:</strong>' header. Carefully read each question and provide your answer below the '<strong>Answer:</strong>' header by editing the Markdown cell.</p>
-<blockquote><p><strong>Note</strong>: Code and Markdown cells can be executed using the <strong>Shift+Enter</strong> keyboard shortcut. In addition, a cell can be edited by typically clicking it (double-click for Markdown cells) or by pressing <strong>Enter</strong> while it is highlighted.</p>
-</blockquote>
-<h2 id="General-Outline">General Outline<a class="anchor-link" href="#General-Outline">&#182;</a></h2><p>Recall the general outline for SageMaker projects using a notebook instance.</p>
-<ol>
+<h2 id="General-Outline">General Outline<a class="anchor-link" href="#General-Outline">&#182;</a></h2><ol>
 <li>Download or otherwise retrieve the data.</li>
 <li>Process / Prepare the data.</li>
 <li>Upload the processed data to S3.</li>
@@ -13143,7 +13136,7 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Step-1:-Downloading-the-data">Step 1: Downloading the data<a class="anchor-link" href="#Step-1:-Downloading-the-data">&#182;</a></h2><p>As in the XGBoost in SageMaker notebook, we will be using the <a href="http://ai.stanford.edu/~amaas/data/sentiment/">IMDb dataset</a></p>
+<h2 id="Step-1:-Downloading-the-data">Step 1: Downloading the data<a class="anchor-link" href="#Step-1:-Downloading-the-data">&#182;</a></h2><p>We will be using the <a href="http://ai.stanford.edu/~amaas/data/sentiment/">IMDb dataset</a></p>
 <blockquote><p>Maas, Andrew L., et al. <a href="http://ai.stanford.edu/~amaas/data/sentiment/">Learning Word Vectors for Sentiment Analysis</a>. In <em>Proceedings of the 49th Annual Meeting of the Association for Computational Linguistics: Human Language Technologies</em>. Association for Computational Linguistics, 2011.</p>
 </blockquote>
 
@@ -13175,16 +13168,16 @@ div#notebook {
 
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>mkdir: cannot create directory ‘../data’: File exists
---2019-04-20 02:08:20--  http://ai.stanford.edu/~amaas/data/sentiment/aclImdb_v1.tar.gz
+--2019-06-20 17:46:37--  http://ai.stanford.edu/~amaas/data/sentiment/aclImdb_v1.tar.gz
 Resolving ai.stanford.edu (ai.stanford.edu)... 171.64.68.10
 Connecting to ai.stanford.edu (ai.stanford.edu)|171.64.68.10|:80... connected.
 HTTP request sent, awaiting response... 200 OK
 Length: 84125825 (80M) [application/x-gzip]
 Saving to: ‘../data/aclImdb_v1.tar.gz’
 
-../data/aclImdb_v1. 100%[===================&gt;]  80.23M  8.05MB/s    in 12s     
+../data/aclImdb_v1. 100%[===================&gt;]  80.23M  9.95MB/s    in 9.9s    
 
-2019-04-20 02:08:33 (6.65 MB/s) - ‘../data/aclImdb_v1.tar.gz’ saved [84125825/84125825]
+2019-06-20 17:46:47 (8.11 MB/s) - ‘../data/aclImdb_v1.tar.gz’ saved [84125825/84125825]
 
 </pre>
 </div>
@@ -13376,7 +13369,7 @@ Saving to: ‘../data/aclImdb_v1.tar.gz’
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>Convoluted, infuriating and implausible, Fay Grim is hard to sit through but Parker Posey is really the only actress who could take this story and run with it. She&#39;s at once touching,funny, cunning. The supporting actors commit to it as well.&lt;br /&gt;&lt;br /&gt;I wont even try to tell you the plot.. It involves characters from Hartley&#39;s Henry Fool and attempts a tale of international espionage.&lt;br /&gt;&lt;br /&gt;The film works well if you continue along with it-understanding it is. in a sense, completely ridiculous. It becomes more and more ridiculous as you plod along. (I resisted the temptation to turn off the DVD twice).&lt;br /&gt;&lt;br /&gt;Fay Grim requires an adventurous film-goer willing to tackle something that isn&#39;t cookie-cutter. In the end, it offers something that defies description.
+<pre>When I found the movie in the schedule for Christmas, its title did not sound familiar to me since I have not read the novel and had not heard anything about the film. Yet, having read the content, I decided to spend my Christmas evening on watching the movie. The effect surprised me totally: I do not remember when I last saw a film in which every single moment involved me. A VOW TO CHERISH is, without any doubt, one of the movies that now constitutes a real surprise I have received from cinema. Here are some arguments of mine why I consider this film a highly underrated piece of good cinema. &lt;br /&gt;&lt;br /&gt;First, the entire content is particularly educational. It has something to offer to the modern audience - pure right faith and some answers for the universal questions. Is there a need for Christ in our times? Does Love still matter? What for is there faith? What is the logics of burden and suffering in life? Is there really Someone by my side I can always trust? The movie provides the answers through the content since all that happens to the characters may as well happen to any of us.&lt;br /&gt;&lt;br /&gt;Second, the movie is exceptionally humane. The main characters experience inner struggles and cope with extremely hard decisions. Is it better for Kyle David Denman) and Teri (Megan Paul) to start their own lives and forget about the family or retain the values they were taught at home? Is it better for John (Ken Howard) to leave Ellen (Barbara Babcock), his sick wife, and start a new happy life with Julia (Donna Bullock), a woman he falls in love with? In fact, Ellen no longer recognizes him... Yet, he decides to vow HIS WIFE eternal fidelity. Had John&#39;s rebellious brother, Phil (D. David Morin), better go on his easy life although it does not bring him satisfaction or once start to think seriously of his life. Phil&#39;s prayer to God in the park is a psychological masterwork of universal aspect of humanity. These words could be as well said by everybody no matter of where, when or how they live.&lt;br /&gt;&lt;br /&gt;Third, the movie is a great portrayal of family, not very popular nowadays: there are problems, yet, there is always something more powerful that gets these people together. This &#34;something&#34; is love and trust. I know that it may seem a bit idealistic. Not all families can rely on fidelity and it may not be as simple as that. Nevertheless, it is a very educational aspect and a realistic one.&lt;br /&gt;&lt;br /&gt;Fourth, the entire film focuses on people&#39;s mutual help. If we want to live happy lives in our society, we must understand one thing: we have to help one another. Alexander (Ossie Davis) is an example of such attitude. At the beginning of the movie, we see him talk to John about praying. Later, he helps his brother. Alexander is a kinda &#34;angel&#34; that is sent to John and his family. Isn&#39;t it possible that we may become angels to one another?&lt;br /&gt;&lt;br /&gt;Fifth, the artistic features are also worth attention. PERFORMANCES: Barbara Babcock gives an authentic performance as Ellen and although she has a difficult role, she does a perfect job. Consider, for instance, the moment she appears at school and badly wants to teach again. Ken Howard is also memorable as the faithful husband. PICTURE: The most memorable for me was the scene of John and Ellen in the park walking on the fallen leaves (autumn) while the sunshine (love) spreads everywhere. I interpreted as a sort of symbol: even if there is sorrow, this can always be illuminated by light and joy...&lt;br /&gt;&lt;br /&gt;A VOW TO CHERISH is a wonderful movie that realistically showed to me what it means to love, what fidelity is as well it once again proved to me how beautiful it is to live and believe. At the end, I would like to quote the profound words from the movie I found very touching and hope you will also do &lt;br /&gt;&lt;br /&gt;Kyle to his uncle Phil: Yes, he (John Brighton) lives according to the Bible. But nobody forces you to do so. Yet, according to what rules do you live?
 1
 </pre>
 </div>
@@ -13437,7 +13430,7 @@ Saving to: ‘../data/aclImdb_v1.tar.gz’
 <div class="prompt input_prompt">In&nbsp;[8]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># TODO: Apply review_to_words to a review (train_X[100] or any other review)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Apply review_to_words to a review (train_X[100] or any other review)</span>
 <span class="n">review_to_words</span><span class="p">(</span><span class="n">train_X</span><span class="p">[</span><span class="mi">101</span><span class="p">])</span>
 </pre></div>
 
@@ -13457,386 +13450,70 @@ Saving to: ‘../data/aclImdb_v1.tar.gz’
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>[&#39;classic&#39;,
- &#39;someth&#39;,
- &#39;everybodi&#39;,
- &#39;want&#39;,
- &#39;read&#39;,
- &#39;nobodi&#39;,
- &#39;want&#39;,
- &#39;read&#39;,
- &#39;classic&#39;,
- &#39;also&#39;,
- &#39;someth&#39;,
- &#39;everyon&#39;,
- &#39;prais&#39;,
- &#39;one&#39;,
- &#39;read&#39;,
- &#39;mark&#39;,
- &#39;twain&#39;,
- &#39;classic&#39;,
- &#39;seem&#39;,
- &#39;word&#39;,
+<pre>[&#39;often&#39;,
+ &#39;stephen&#39;,
+ &#39;king&#39;,
+ &#39;adapt&#39;,
+ &#39;get&#39;,
+ &#39;collect&#39;,
+ &#39;charact&#39;,
+ &#39;recit&#39;,
+ &#39;dialogu&#39;,
+ &#39;book&#39;,
+ &#39;realli&#39;,
+ &#39;captur&#39;,
+ &#39;heart&#39;,
+ &#39;book&#39;,
+ &#39;mayb&#39;,
  &#39;use&#39;,
- &#39;describ&#39;,
- &#39;scarfac&#39;,
- &#39;brian&#39;,
- &#39;depalma&#39;,
- &#39;1983&#39;,
- &#39;film&#39;,
- &#39;opul&#39;,
- &#39;self&#39;,
- &#39;surrend&#39;,
- &#39;greed&#39;,
- &#39;danger&#39;,
- &#39;among&#39;,
- &#39;florida&#39;,
- &#39;drug&#39;,
- &#39;ring&#39;,
- &#39;peopl&#39;,
- &#39;critic&#39;,
- &#39;rapper&#39;,
- &#39;matter&#39;,
- &#39;deem&#39;,
- &#39;film&#39;,
- &#39;epic&#39;,
- &#39;gangster&#39;,
- &#39;classic&#39;,
- &#39;eptiom&#39;,
- &#39;gangster&#39;,
- &#39;film&#39;,
- &#39;anyth&#39;,
- &#39;prais&#39;,
- &#39;wrong&#39;,
- &#39;reason&#39;,
- &#39;scarfac&#39;,
- &#39;terrif&#39;,
- &#39;film&#39;,
- &#39;deserv&#39;,
- &#39;prais&#39;,
- &#39;prais&#39;,
- &#39;get&#39;,
- &#39;audienc&#39;,
- &#39;today&#39;,
- &#39;therefor&#39;,
- &#39;fine&#39;,
- &#39;point&#39;,
- &#39;poignantli&#39;,
- &#39;make&#39;,
- &#39;miss&#39;,
- &#39;gener&#39;,
- &#39;public&#39;,
- &#39;first&#39;,
- &#39;film&#39;,
- &#39;cuban&#39;,
- &#39;refuge&#39;,
- &#39;past&#39;,
- &#39;want&#39;,
- &#39;escap&#39;,
- &#39;commun&#39;,
- &#39;grasp&#39;,
- &#39;find&#39;,
- &#39;happi&#39;,
- &#39;simpl&#39;,
- &#39;ye&#39;,
- &#39;layer&#39;,
- &#39;de&#39;,
- &#39;palma&#39;,
- &#39;direct&#39;,
- &#39;geniu&#39;,
- &#39;great&#39;,
+ &#39;larg&#39;,
+ &#39;chunk&#39;,
+ &#39;text&#39;,
+ &#39;straight&#39;,
+ &#39;book&#39;,
+ &#39;bit&#39;,
+ &#39;improv&#39;,
+ &#39;event&#39;,
  &#39;stori&#39;,
- &#39;written&#39;,
- &#39;oliv&#39;,
- &#39;stone&#39;,
- &#39;ye&#39;,
- &#39;know&#39;,
- &#39;actual&#39;,
- &#39;wrote&#39;,
- &#39;real&#39;,
- &#39;good&#39;,
- &#39;one&#39;,
- &#39;play&#39;,
- &#39;charact&#39;,
- &#39;look&#39;,
- &#39;escap&#39;,
- &#39;escap&#39;,
- &#39;natur&#39;,
- &#39;element&#39;,
- &#39;dealt&#39;,
- &#39;film&#39;,
- &#39;charact&#39;,
- &#39;someth&#39;,
- &#39;offer&#39;,
- &#39;make&#39;,
- &#39;likabl&#39;,
- &#39;everyon&#39;,
- &#39;could&#39;,
- &#39;appreci&#39;,
- &#39;film&#39;,
- &#39;entwin&#39;,
- &#39;world&#39;,
- &#39;mystiqu&#39;,
- &#39;money&#39;,
- &#39;price&#39;,
- &#39;learn&#39;,
- &#39;charact&#39;,
- &#39;think&#39;,
- &#39;get&#39;,
- &#39;better&#39;,
- &#39;chanc&#39;,
- &#39;life&#39;,
- &#39;true&#39;,
- &#39;dramat&#39;,
- &#39;ironi&#39;,
- &#39;actual&#39;,
- &#39;get&#39;,
- &#39;wors&#39;,
- &#39;tragedi&#39;,
- &#39;would&#39;,
- &#39;better&#39;,
- &#39;word&#39;,
- &#39;describ&#39;,
- &#39;movi&#39;,
- &#39;prais&#39;,
- &#39;film&#39;,
- &#39;drug&#39;,
- &#39;usag&#39;,
- &#39;violenc&#39;,
- &#39;dialog&#39;,
- &#39;total&#39;,
- &#39;miss&#39;,
- &#39;point&#39;,
- &#39;noth&#39;,
+ &#39;big&#39;,
+ &#39;part&#39;,
+ &#39;success&#39;,
+ &#39;miko&#39;,
+ &#39;hugh&#39;,
+ &#39;babi&#39;,
+ &#39;gage&#39;,
+ &#39;dale&#39;,
+ &#39;midkiff&#39;,
+ &#39;denis&#39;,
+ &#39;tasha&#39;,
+ &#39;yar&#39;,
+ &#39;crosbi&#39;,
  &#39;realli&#39;,
- &#39;posit&#39;,
- &#39;film&#39;,
- &#39;besid&#39;,
- &#39;charact&#39;,
- &#39;posit&#39;,
- &#39;expect&#39;,
- &#39;film&#39;,
- &#39;work&#39;,
- &#39;well&#39;,
- &#39;devast&#39;,
- &#39;film&#39;,
- &#39;serv&#39;,
- &#39;deliv&#39;,
- &#39;messag&#39;,
- &#39;film&#39;,
- &#39;look&#39;,
- &#39;cool&#39;,
- &#39;attract&#39;,
- &#39;viewer&#39;,
- &#39;brian&#39;,
- &#39;de&#39;,
- &#39;palma&#39;,
- &#39;make&#39;,
- &#39;movi&#39;,
- &#39;cult&#39;,
- &#39;gangster&#39;,
- &#39;brainless&#39;,
- &#39;action&#39;,
- &#39;fan&#39;,
- &#39;next&#39;,
- &#39;film&#39;,
- &#39;adult&#39;,
- &#39;drama&#39;,
- &#39;gangster&#39;,
- &#39;film&#39;,
- &#39;share&#39;,
- &#39;action&#39;,
- &#39;action&#39;,
- &#39;plot&#39;,
- &#39;care&#39;,
- &#39;point&#39;,
- &#39;like&#39;,
- &#39;alien&#39;,
- &#39;exampl&#39;,
- &#39;big&#39;,
- &#39;dumb&#39;,
- &#39;action&#39;,
- &#39;film&#39;,
- &#39;audienc&#39;,
- &#39;perceiv&#39;,
- &#39;film&#39;,
- &#39;big&#39;,
- &#39;dumb&#39;,
- &#39;action&#39;,
- &#39;gangster&#39;,
- &#39;film&#39;,
- &#39;drug&#39;,
- &#39;shoot&#39;,
- &#39;peopl&#39;,
- &#39;ridicul&#39;,
- &#39;hogwash&#39;,
- &#39;film&#39;,
- &#39;bad&#39;,
- &#39;promot&#39;,
- &#39;said&#39;,
- &#39;film&#39;,
- &#39;inde&#39;,
- &#39;great&#39;,
- &#39;film&#39;,
- &#39;great&#39;,
- &#39;cinematographi&#39;,
- &#39;pull&#39;,
- &#39;stori&#39;,
- &#39;dramat&#39;,
- &#39;score&#39;,
- &#39;true&#39;,
- &#39;giorgio&#39;,
- &#39;morod&#39;,
- &#39;style&#39;,
- &#39;simpli&#39;,
- &#39;could&#39;,
- &#39;give&#39;,
- &#39;chill&#39;,
- &#39;bring&#39;,
- &#39;tear&#39;,
- &#39;film&#39;,
- &#39;rather&#39;,
- &#39;lengthi&#39;,
- &#39;stori&#39;,
- &#39;moment&#39;,
- &#39;count&#39;,
  &#39;act&#39;,
- &#39;terrif&#39;,
- &#39;al&#39;,
- &#39;pacino&#39;,
- &#39;enough&#39;,
- &#39;said&#39;,
- &#39;role&#39;,
- &#39;put&#39;,
- &#39;mind&#39;,
- &#39;except&#39;,
- &#39;pretti&#39;,
- &#39;boy&#39;,
- &#39;steven&#39;,
- &#39;bauer&#39;,
- &#39;manni&#39;,
- &#39;think&#39;,
- &#39;much&#39;,
- &#39;film&#39;,
- &#39;actual&#39;,
- &#39;make&#39;,
  &#39;like&#39;,
- &#39;goe&#39;,
- &#39;maestro&#39;,
- &#39;de&#39;,
- &#39;palma&#39;,
- &#39;direct&#39;,
- &#39;michel&#39;,
- &#39;pfeiffer&#39;,
- &#39;true&#39;,
- &#39;gem&#39;,
- &#39;elvira&#39;,
- &#39;pop&#39;,
- &#39;fresh&#39;,
- &#39;heel&#39;,
- &#39;sort&#39;,
- &#39;embarrass&#39;,
- &#39;greas&#39;,
- &#39;2&#39;,
- &#39;got&#39;,
- &#39;ticket&#39;,
- &#39;ride&#39;,
- &#39;perform&#39;,
- &#39;hold&#39;,
- &#39;bar&#39;,
- &#39;perform&#39;,
- &#39;beauti&#39;,
- &#39;meet&#39;,
- &#39;eye&#39;,
- &#39;three&#39;,
- &#39;true&#39;,
- &#39;diamond&#39;,
- &#39;rough&#39;,
- &#39;mari&#39;,
- &#39;elizabeth&#39;,
- &#39;mastrontonio&#39;,
- &#39;toni&#39;,
- &#39;sister&#39;,
- &#39;gina&#39;,
- &#39;smile&#39;,
- &#39;cri&#39;,
- &#39;see&#39;,
- &#39;soul&#39;,
- &#39;fresh&#39;,
- &#39;way&#39;,
- &#39;live&#39;,
- &#39;watch&#39;,
- &#39;deterior&#39;,
- &#39;paul&#39;,
- &#39;shenar&#39;,
- &#39;alejandro&#39;,
- &#39;sosa&#39;,
- &#39;drug&#39;,
- &#39;lord&#39;,
- &#39;run&#39;,
- &#39;deeper&#39;,
- &#39;river&#39;,
- &#39;shenar&#39;,
- &#39;portray&#39;,
- &#39;miriam&#39;,
- &#39;colom&#39;,
- &#39;toni&#39;,
- &#39;gina&#39;,
- &#39;torn&#39;,
- &#39;mother&#39;,
- &#39;three&#39;,
- &#39;dig&#39;,
- &#39;film&#39;,
- &#39;deep&#39;,
- &#39;go&#39;,
- &#39;review&#39;,
- &#39;learn&#39;,
- &#39;one&#39;,
+ &#39;parent&#39;,
+ &#39;scene&#39;,
+ &#39;loui&#39;,
+ &#39;cuddl&#39;,
+ &#39;gage&#39;,
+ &#39;natur&#39;,
+ &#39;togeth&#39;,
+ &#39;fred&#39;,
+ &#39;gwynn&#39;,
+ &#39;wonder&#39;,
+ &#39;nail&#39;,
  &#39;main&#39;,
- &#39;thing&#39;,
- &#39;watch&#39;,
- &#39;scarfac&#39;,
- &#39;first&#39;,
- &#39;time&#39;,
- &#39;alway&#39;,
- &#39;go&#39;,
- &#39;film&#39;,
- &#39;unsuspect&#39;,
- &#39;hype&#39;,
- &#39;talk&#39;,
- &#39;film&#39;,
- &#39;cannot&#39;,
- &#39;possibl&#39;,
- &#39;prepar&#39;,
- &#39;realli&#39;,
- &#39;see&#39;,
- &#39;know&#39;,
- &#39;de&#39;,
- &#39;palma&#39;,
+ &#39;accent&#39;,
+ &#39;perfectli&#39;,
+ &#39;without&#39;,
+ &#39;laps&#39;,
+ &#39;parodi&#39;,
+ &#39;wise&#39;,
+ &#39;warm&#39;,
  &#39;like&#39;,
- &#39;give&#39;,
- &#39;even&#39;,
- &#39;glimps&#39;,
- &#39;film&#39;,
- &#39;hold&#39;,
- &#39;ignor&#39;,
- &#39;rap&#39;,
- &#39;crap&#39;,
- &#39;ignor&#39;,
- &#39;mindless&#39;,
- &#39;violenc&#39;,
- &#39;support&#39;,
- &#39;fix&#39;,
- &#39;glass&#39;,
- &#39;bailey&#39;,
- &#39;rock&#39;,
- &#39;indulg&#39;,
- &#39;emot&#39;,
- &#39;view&#39;,
- &#39;great&#39;,
- &#39;film&#39;,
- &#39;real&#39;,
- &#39;scarfac&#39;]</pre>
+ &#39;jud&#39;,
+ &#39;8&#39;,
+ &#39;10&#39;]</pre>
 </div>
 
 </div>
@@ -13848,7 +13525,7 @@ Saving to: ‘../data/aclImdb_v1.tar.gz’
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>Question:</strong> Above we mentioned that <code>review_to_words</code> method removes html formatting and allows us to tokenize the words found in a review, for example, converting <em>entertained</em> and <em>entertaining</em> into <em>entertain</em> so that they are treated as though they are the same word. What else, if anything, does this method do to the input?</p>
+<p><strong>Note</strong> Above we mentioned that <code>review_to_words</code> method removes html formatting and allows us to tokenize the words found in a review, for example, converting <em>entertained</em> and <em>entertaining</em> into <em>entertain</em> so that they are treated as though they are the same word. The function convert the text to lower case and split the string into word. It then removes the stop words and stems the word</p>
 
 </div>
 </div>
@@ -13856,16 +13533,7 @@ Saving to: ‘../data/aclImdb_v1.tar.gz’
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>Answer:</strong>
-The function convert the text to lower case and split the string into word. It then removes the stop words and stems the word</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>The method below applies the <code>review_to_words</code> method to each of the reviews in the training and testing datasets. In addition it caches the results. This is because performing this processing step can take a long time. This way if you are unable to complete the notebook in the current session, you can come back without needing to process the data a second time.</p>
+<p>The method below applies the <code>review_to_words</code> method to each of the reviews in the training and testing datasets. In addition it caches the results. This is because performing this processing step can take a long time. This way if we are unable to complete the notebook in the current session, we can come back without needing to process the data a second time.</p>
 
 </div>
 </div>
@@ -13924,7 +13592,7 @@ The function convert the text to lower case and split the string into word. It t
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[10]:</div>
+<div class="prompt input_prompt">In&nbsp;[11]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Preprocess data</span>
@@ -13957,7 +13625,7 @@ The function convert the text to lower case and split the string into word. It t
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Transform-the-data">Transform the data<a class="anchor-link" href="#Transform-the-data">&#182;</a></h2><p>In the XGBoost notebook we transformed the data from its word representation to a bag-of-words feature representation. For the model we are going to construct in this notebook we will construct a feature representation which is very similar. To start, we will represent each word as an integer. Of course, some of the words that appear in the reviews occur very infrequently and so likely don't contain much information for the purposes of sentiment analysis. The way we will deal with this problem is that we will fix the size of our working vocabulary and we will only include the words that appear most frequently. We will then combine all of the infrequent words into a single category and, in our case, we will label it as <code>1</code>.</p>
+<h2 id="Transform-the-data">Transform the data<a class="anchor-link" href="#Transform-the-data">&#182;</a></h2><p>Here we will transform the data from its word representation to a bag-of-words feature representation.To start, we will represent each word as an integer. Of course, some of the words that appear in the reviews occur very infrequently and so likely don't contain much information for the purposes of sentiment analysis. The way we will deal with this problem is that we will fix the size of our working vocabulary and we will only include the words that appear most frequently. We will then combine all of the infrequent words into a single category and, in our case, we will label it as <code>1</code>.</p>
 <p>Since we will be using a recurrent neural network, it will be convenient if the length of each review is the same. To do this, we will fix a size for our reviews and then pad short reviews with the category 'no word' (which we will label <code>0</code>) and truncate long reviews.</p>
 
 </div>
@@ -13966,8 +13634,8 @@ The function convert the text to lower case and split the string into word. It t
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="(TODO)-Create-a-word-dictionary">(TODO) Create a word dictionary<a class="anchor-link" href="#(TODO)-Create-a-word-dictionary">&#182;</a></h3><p>To begin with, we need to construct a way to map words that appear in the reviews to integers. Here we fix the size of our vocabulary (including the 'no word' and 'infrequent' categories) to be <code>5000</code> but you may wish to change this to see how it affects the model.</p>
-<blockquote><p><strong>TODO:</strong> Complete the implementation for the <code>build_dict()</code> method below. Note that even though the vocab_size is set to <code>5000</code>, we only want to construct a mapping for the most frequently appearing <code>4998</code> words. This is because we want to reserve the special labels <code>0</code> for 'no word' and <code>1</code> for 'infrequent word'.</p>
+<h3 id="Create-a-word-dictionary">Create a word dictionary<a class="anchor-link" href="#Create-a-word-dictionary">&#182;</a></h3><p>To begin with, we need to construct a way to map words that appear in the reviews to integers. Here we fix the size of our vocabulary (including the 'no word' and 'infrequent' categories) to be <code>5000</code> but you may wish to change this to see how it affects the model.</p>
+<blockquote><p>Note that even though the vocab_size is set to <code>5000</code>, we only want to construct a mapping for the most frequently appearing <code>4998</code> words. This is because we want to reserve the special labels <code>0</code> for 'no word' and <code>1</code> for 'infrequent word'.</p>
 </blockquote>
 
 </div>
@@ -13975,7 +13643,7 @@ The function convert the text to lower case and split the string into word. It t
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[11]:</div>
+<div class="prompt input_prompt">In&nbsp;[12]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -13983,7 +13651,7 @@ The function convert the text to lower case and split the string into word. It t
 <span class="k">def</span> <span class="nf">build_dict</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">vocab_size</span> <span class="o">=</span> <span class="mi">5000</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Construct and return a dictionary mapping each of the most frequently appearing words to a unique integer.&quot;&quot;&quot;</span>
     
-    <span class="c1"># TODO: Determine how often each word appears in `data`. Note that `data` is a list of sentences and that a</span>
+    <span class="c1"># Determine how often each word appears in `data`. Note that `data` is a list of sentences and that a</span>
     <span class="c1">#       sentence is a list of words.</span>
     
     <span class="n">word_count</span> <span class="o">=</span> <span class="p">{}</span> <span class="c1"># A dict storing the words that appear in the reviews along with how often they occur</span>
@@ -13994,7 +13662,7 @@ The function convert the text to lower case and split the string into word. It t
             <span class="k">else</span><span class="p">:</span>
                 <span class="n">word_count</span><span class="p">[</span><span class="n">word</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
     
-    <span class="c1"># TODO: Sort the words found in `data` so that sorted_words[0] is the most frequently appearing word and</span>
+    <span class="c1"># Sort the words found in `data` so that sorted_words[0] is the most frequently appearing word and</span>
     <span class="c1">#       sorted_words[-1] is the least frequently appearing word.</span>
     <span class="n">sorted_words</span> <span class="o">=</span> <span class="kc">None</span> 
     <span class="c1">#sorted_words = [item[0] for item in sorted(word_count.items(), key=lambda x: x[1], reverse=True)]</span>
@@ -14013,7 +13681,7 @@ The function convert the text to lower case and split the string into word. It t
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[12]:</div>
+<div class="prompt input_prompt">In&nbsp;[13]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">word_dict</span> <span class="o">=</span> <span class="n">build_dict</span><span class="p">(</span><span class="n">train_X</span><span class="p">)</span>
@@ -14024,28 +13692,12 @@ The function convert the text to lower case and split the string into word. It t
 </div>
 
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>Question:</strong> What are the five most frequently appearing (tokenized) words in the training set? Does it makes sense that these words appear frequently in the training set?</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>Answer:</strong> movi, film, one, like and time. Yes. I use these words a lot when I write movie reviews!</p>
-
-</div>
-</div>
-</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[13]:</div>
+<div class="prompt input_prompt">In&nbsp;[14]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># TODO: Use this space to determine the five most frequently appearing words in the training set.</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># to determine the five most frequently appearing words in the training set.</span>
 <span class="nb">print</span><span class="p">({</span><span class="n">k</span><span class="p">:</span> <span class="n">word_dict</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="n">word_dict</span><span class="p">)[:</span><span class="mi">5</span><span class="p">]})</span>
 </pre></div>
 
@@ -14082,7 +13734,7 @@ The function convert the text to lower case and split the string into word. It t
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[14]:</div>
+<div class="prompt input_prompt">In&nbsp;[15]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">data_dir</span> <span class="o">=</span> <span class="s1">&#39;../data/pytorch&#39;</span> <span class="c1"># The folder we will use for storing data</span>
@@ -14097,7 +13749,7 @@ The function convert the text to lower case and split the string into word. It t
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[15]:</div>
+<div class="prompt input_prompt">In&nbsp;[16]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">data_dir</span><span class="p">,</span> <span class="s1">&#39;word_dict.pkl&#39;</span><span class="p">),</span> <span class="s2">&quot;wb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
@@ -14119,7 +13771,7 @@ The function convert the text to lower case and split the string into word. It t
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[16]:</div>
+<div class="prompt input_prompt">In&nbsp;[17]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">convert_and_pad</span><span class="p">(</span><span class="n">word_dict</span><span class="p">,</span> <span class="n">sentence</span><span class="p">,</span> <span class="n">pad</span><span class="o">=</span><span class="mi">500</span><span class="p">):</span>
@@ -14155,7 +13807,7 @@ The function convert the text to lower case and split the string into word. It t
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[17]:</div>
+<div class="prompt input_prompt">In&nbsp;[18]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">train_X</span><span class="p">,</span> <span class="n">train_X_len</span> <span class="o">=</span> <span class="n">convert_and_pad_data</span><span class="p">(</span><span class="n">word_dict</span><span class="p">,</span> <span class="n">train_X</span><span class="p">)</span>
@@ -14167,20 +13819,12 @@ The function convert the text to lower case and split the string into word. It t
 </div>
 
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>As a quick check to make sure that things are working as intended, check to see what one of the reviews in the training set looks like after having been processeed. Does this look reasonable? What is the length of a review in the training set?</p>
-
-</div>
-</div>
-</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[18]:</div>
+<div class="prompt input_prompt">In&nbsp;[19]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Use this cell to examine one of the processed reviews to make sure everything is working as intended.</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># to examine one of the processed reviews to make sure everything is working as intended.</span>
 <span class="n">train_X</span><span class="p">[</span><span class="mi">100</span><span class="p">]</span>
 </pre></div>
 
@@ -14194,45 +13838,45 @@ The function convert the text to lower case and split the string into word. It t
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[18]:</div>
+    <div class="prompt output_prompt">Out[19]:</div>
 
 
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>array([3514,   26,    2,  107,  162,  157, 3514, 3422,    1, 4786,  128,
-          1, 1508, 2832, 3057, 1352,   42, 1280, 1508, 3406,    1, 3735,
-          1,  723,  159,  125,    7,  606,  670,  914,    3,  204,    2,
-       2300,  149,   35,  235,    9, 3514,   14,    1, 4786,   57,    1,
-         60,   20,  113,  916, 2021, 2701,   60, 3406,    1,  214,  553,
-       1396,   60, 2050,  432,   79, 1065,   78,   60, 3735,    1,   16,
-        153,  301,  482, 1707,   93, 2127,    1,    1,    1,   57,    7,
-        378,   60,    1,    1,  188,  259,    4,  764,   18, 2569, 4866,
-         26, 1083,    1, 4786,   18,   53,   35,    2,   74,   98,  935,
-        929,  636,  473,  315,   16,  324,    2,   49,  570,   53,   56,
-         47,   48, 1642,    2,  140, 3535,  247,    1,  364,    1,  330,
-       1135, 3085,  104,   18,    1,  394,    5, 2050,  432,   55,  647,
-          5, 3514,    0,    0,    0,    0,    0,    0,    0,    0,    0,
-          0,    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,
-          0,    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,
-          0,    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,
-          0,    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,
-          0,    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,
-          0,    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,
-          0,    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,
-          0,    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,
-          0,    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,
-          0,    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,
-          0,    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,
-          0,    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,
-          0,    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,
-          0,    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,
-          0,    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,
-          0,    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,
-          0,    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,
-          0,    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,
-          0,    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,
-          0,    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,
+<pre>array([ 184,    2, 4228,  885,  309,  225,  953,  158,  171,  481,  487,
+        153,    3,  172,  171, 1260,  311,  676,  885,   14,   12,    2,
+        112,  259,  274,  254,  136,  135,    3,   93,  588,  169,  268,
+          1,    1,  129,  642,    4,    2, 4868,   71,  259, 1017,  361,
+       2395, 1422,  353,    3,  478, 1966,  267,    7,  361,   28,  266,
+       1260,  503, 1721,   66,  518,  583,  179,  768,  113, 1038,  881,
+        925,  416,  122, 2371,    6,   29,   59,  406, 1038, 1306,    1,
+        699,   50,   16,  201,  383,  131, 1338,    2,  563,  881, 1260,
+        158,  109,    9,  121,   17,  109,   97,  209,    2,  301,  220,
+        217,    9,  365, 2114,  792, 3466,  385,  178, 1429,   58, 3677,
+        542,    1,    1,    1,  633,   87,   75,  683,  118, 3445,  555,
+       3739,  273,   58,  227, 3090, 1816,  219, 3117, 1915,    1, 1020,
+        243,   87,   80,  475,   50, 2309, 3245,    1,  162,  263,   29,
+        100, 3117, 1110, 1435,  172,  311,    1,  243, 2667,    1,  227,
+          1,  334, 4229,  542,    1,   58,   25,  696,   50,  188,  324,
+          1,   87,   30,  533,   50, 4229,    1,  436, 1086, 1366,    1,
+        925,  660,  220,  307,   36,   17,  233, 1261,  406,   75,  721,
+          2,   26,  286,  118,  865, 2522,  204,  172,  131,   66,  271,
+         10,   23,  223,   66,   29, 1338,   37,  121,   39,  124,    1,
+        118, 1808,    1,  121,  543, 1956, 1721,  660,  669,    4, 2416,
+        266,    3, 1079,   23, 4597,  163,   49,   75,  475,   75,  795,
+        130,  244,    4,   35,  163,    4,   79, 3132,    1, 1075,  360,
+       1516,  159,    2,   11,  242,  227, 3246,  231,  163,  334, 3132,
+       1743, 1041, 1303,  227,  118,  284,  121,  128, 1041,    4,   79,
+       4784,  636,  285,   27,  218,  592,   60, 1915,    1,   57, 1945,
+         60, 3117,  188,  814,   81,  313,  193,  353, 1473,  169,  185,
+        318,  841,   49, 1555, 3090, 1816,   27,  785, 1038,  489,  269,
+        785,   18,  227, 3117, 1086,  413, 2538,  219,    1, 3225,   29,
+       2886, 2296, 1651,  330, 1508,   14, 4870,  131,    1,  359, 1488,
+          1,    1,  108,    2,  669,   20,  152,   29,    1,   17,  597,
+        126,   75,   94,   22,   15,    5, 1635, 2842,  307,    2,  184,
+        431,  189,   27, 3677, 1450, 4229,  363,  227,    1,   75, 1566,
+       2869, 1144,  370,  172, 1566, 1098,   75,    0,    0,    0,    0,
           0,    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,
           0,    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,
           0,    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,
@@ -14257,23 +13901,7 @@ The function convert the text to lower case and split the string into word. It t
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>Question:</strong> In the cells above we use the <code>preprocess_data</code> and <code>convert_and_pad_data</code> methods to process both the training and testing set. Why or why not might this be a problem?</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>Answer:</strong> It gives up the information of words not appreaing in word_dict. And no matter how long the review is, All the input vectors will have the same size.</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Step-3:-Upload-the-data-to-S3">Step 3: Upload the data to S3<a class="anchor-link" href="#Step-3:-Upload-the-data-to-S3">&#182;</a></h2><p>As in the XGBoost notebook, we will need to upload the training dataset to S3 in order for our training code to access it. For now we will save it locally and we will upload to S3 later on.</p>
+<h2 id="Step-3:-Upload-the-data-to-S3">Step 3: Upload the data to S3<a class="anchor-link" href="#Step-3:-Upload-the-data-to-S3">&#182;</a></h2><p>We will need to upload the training dataset to S3 in order for our training code to access it. For now we will save it locally and we will upload to S3 later on.</p>
 <h3 id="Save-the-processed-training-dataset-locally">Save the processed training dataset locally<a class="anchor-link" href="#Save-the-processed-training-dataset-locally">&#182;</a></h3><p>It is important to note the format of the data that we are saving as we will need to know it when we write the training code. In our case, each row of the dataset has the form <code>label</code>, <code>length</code>, <code>review[500]</code> where <code>review[500]</code> is a sequence of <code>500</code> integers representing the words in the review.</p>
 
 </div>
@@ -14281,7 +13909,7 @@ The function convert the text to lower case and split the string into word. It t
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[19]:</div>
+<div class="prompt input_prompt">In&nbsp;[20]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
@@ -14305,7 +13933,7 @@ The function convert the text to lower case and split the string into word. It t
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[20]:</div>
+<div class="prompt input_prompt">In&nbsp;[21]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">sagemaker</span>
@@ -14325,7 +13953,7 @@ The function convert the text to lower case and split the string into word. It t
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[21]:</div>
+<div class="prompt input_prompt">In&nbsp;[22]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">input_data</span> <span class="o">=</span> <span class="n">sagemaker_session</span><span class="o">.</span><span class="n">upload_data</span><span class="p">(</span><span class="n">path</span><span class="o">=</span><span class="n">data_dir</span><span class="p">,</span> <span class="n">bucket</span><span class="o">=</span><span class="n">bucket</span><span class="p">,</span> <span class="n">key_prefix</span><span class="o">=</span><span class="n">prefix</span><span class="p">)</span>
@@ -14339,7 +13967,7 @@ The function convert the text to lower case and split the string into word. It t
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>NOTE:</strong> The cell above uploads the entire contents of our data directory. This includes the <code>word_dict.pkl</code> file. This is fortunate as we will need this later on when we create an endpoint that accepts an arbitrary review. For now, we will just take note of the fact that it resides in the data directory (and so also in the S3 training bucket) and that we will need to make sure it gets saved in the model directory.</p>
+<p><strong>NOTE:</strong> The cell above uploads the entire contents of our data directory. This includes the <code>word_dict.pkl</code> file. We will need this later on when we create an endpoint that accepts an arbitrary review. For now, we will just take note of the fact that it resides in the data directory (and so also in the S3 training bucket) and that we will need to make sure it gets saved in the model directory.</p>
 
 </div>
 </div>
@@ -14347,13 +13975,13 @@ The function convert the text to lower case and split the string into word. It t
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Step-4:-Build-and-Train-the-PyTorch-Model">Step 4: Build and Train the PyTorch Model<a class="anchor-link" href="#Step-4:-Build-and-Train-the-PyTorch-Model">&#182;</a></h2><p>In the XGBoost notebook we discussed what a model is in the SageMaker framework. In particular, a model comprises three objects</p>
+<h2 id="Step-4:-Build-and-Train-the-PyTorch-Model">Step 4: Build and Train the PyTorch Model<a class="anchor-link" href="#Step-4:-Build-and-Train-the-PyTorch-Model">&#182;</a></h2><p>In particular, a model comprises three objects</p>
 <ul>
 <li>Model Artifacts,</li>
 <li>Training Code, and</li>
 <li>Inference Code,</li>
 </ul>
-<p>each of which interact with one another. In the XGBoost example we used training and inference code that was provided by Amazon. Here we will still be using containers provided by Amazon with the added benefit of being able to include our own custom code.</p>
+<p>each of which interact with one another. Here we will be using containers provided by Amazon with the added benefit of being able to include our own custom code.</p>
 <p>We will start by implementing our own neural network in PyTorch along with a training script. For the purposes of this project we have provided the necessary model object in the <code>model.py</code> file, inside of the <code>train</code> folder. You can see the provided implementation by running the cell below.</p>
 
 </div>
@@ -14361,7 +13989,7 @@ The function convert the text to lower case and split the string into word. It t
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[22]:</div>
+<div class="prompt input_prompt">In&nbsp;[23]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>pygmentize train/model.py
@@ -14393,7 +14021,6 @@ The function convert the text to lower case and split the string into word. It t
 <span class="ansi-yellow-fg">        Initialize the model by settingg up the various layers.</span>
 <span class="ansi-yellow-fg">        &#34;&#34;&#34;</span>
         <span class="ansi-cyan-fg">super</span>(LSTMClassifier, <span class="ansi-cyan-fg">self</span>).<span class="ansi-green-fg">__init__</span>()
-
         <span class="ansi-cyan-fg">self</span>.embedding = nn.Embedding(vocab_size, embedding_dim, padding_idx=<span class="ansi-blue-fg">0</span>)
         <span class="ansi-cyan-fg">self</span>.lstm = nn.LSTM(embedding_dim, hidden_dim)
         <span class="ansi-cyan-fg">self</span>.dense = nn.Linear(in_features=hidden_dim, out_features=<span class="ansi-blue-fg">1</span>)
@@ -14432,7 +14059,7 @@ The function convert the text to lower case and split the string into word. It t
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[23]:</div>
+<div class="prompt input_prompt">In&nbsp;[24]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">torch</span>
@@ -14459,14 +14086,14 @@ The function convert the text to lower case and split the string into word. It t
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="(TODO)-Writing-the-training-method">(TODO) Writing the training method<a class="anchor-link" href="#(TODO)-Writing-the-training-method">&#182;</a></h3><p>Next we need to write the training code itself. This should be very similar to training methods that you have written before to train PyTorch models. We will leave any difficult aspects such as model saving / loading and parameter loading until a little later.</p>
+<h3 id="Writing-the-training-method">Writing the training method<a class="anchor-link" href="#Writing-the-training-method">&#182;</a></h3><p>Next we need to write the training code itself. We will leave any difficult aspects such as model saving / loading and parameter loading until a little later.</p>
 
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[24]:</div>
+<div class="prompt input_prompt">In&nbsp;[25]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">train</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">train_loader</span><span class="p">,</span> <span class="n">epochs</span><span class="p">,</span> <span class="n">optimizer</span><span class="p">,</span> <span class="n">loss_fn</span><span class="p">,</span> <span class="n">device</span><span class="p">):</span>
@@ -14505,7 +14132,7 @@ The function convert the text to lower case and split the string into word. It t
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[25]:</div>
+<div class="prompt input_prompt">In&nbsp;[26]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">torch.optim</span> <span class="k">as</span> <span class="nn">optim</span>
@@ -14533,11 +14160,11 @@ The function convert the text to lower case and split the string into word. It t
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>Epoch: 1, BCELoss: 0.6917004823684693
-Epoch: 2, BCELoss: 0.6821267247200012
-Epoch: 3, BCELoss: 0.6733235597610474
-Epoch: 4, BCELoss: 0.6630948066711426
-Epoch: 5, BCELoss: 0.6499970197677613
+<pre>Epoch: 1, BCELoss: 0.6921913981437683
+Epoch: 2, BCELoss: 0.6851710677146912
+Epoch: 3, BCELoss: 0.6789090871810913
+Epoch: 4, BCELoss: 0.6712851166725159
+Epoch: 5, BCELoss: 0.660596489906311
 </pre>
 </div>
 </div>
@@ -14557,8 +14184,7 @@ Epoch: 5, BCELoss: 0.6499970197677613
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="(TODO)-Training-the-model">(TODO) Training the model<a class="anchor-link" href="#(TODO)-Training-the-model">&#182;</a></h3><p>When a PyTorch model is constructed in SageMaker, an entry point must be specified. This is the Python file which will be executed when the model is trained. Inside of the <code>train</code> directory is a file called <code>train.py</code> which has been provided and which contains most of the necessary code to train our model. The only thing that is missing is the implementation of the <code>train()</code> method which you wrote earlier in this notebook.</p>
-<p><strong>TODO</strong>: Copy the <code>train()</code> method written above and paste it into the <code>train/train.py</code> file where required.</p>
+<h3 id="Training-the-model">Training the model<a class="anchor-link" href="#Training-the-model">&#182;</a></h3><p>When a PyTorch model is constructed in SageMaker, an entry point must be specified. This is the Python file which will be executed when the model is trained. Inside of the <code>train</code> directory is a file called <code>train.py</code> which has been provided and which contains most of the necessary code to train our model.</p>
 <p>The way that SageMaker passes hyperparameters to the training script is by way of arguments. These arguments can then be parsed and used in the training script. To see how this is done take a look at the provided <code>train/train.py</code> file.</p>
 
 </div>
@@ -14566,7 +14192,7 @@ Epoch: 5, BCELoss: 0.6499970197677613
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[26]:</div>
+<div class="prompt input_prompt">In&nbsp;[27]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sagemaker.pytorch</span> <span class="k">import</span> <span class="n">PyTorch</span>
@@ -14577,7 +14203,7 @@ Epoch: 5, BCELoss: 0.6499970197677613
                     <span class="n">role</span><span class="o">=</span><span class="n">role</span><span class="p">,</span>
                     <span class="n">framework_version</span><span class="o">=</span><span class="s1">&#39;0.4.0&#39;</span><span class="p">,</span>
                     <span class="n">train_instance_count</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
-                    <span class="n">train_instance_type</span><span class="o">=</span><span class="s1">&#39;ml.m4.xlarge&#39;</span><span class="p">,</span>
+                    <span class="n">train_instance_type</span><span class="o">=</span><span class="s1">&#39;ml.p2.xlarge&#39;</span><span class="p">,</span>
                     <span class="n">hyperparameters</span><span class="o">=</span><span class="p">{</span>
                         <span class="s1">&#39;epochs&#39;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
                         <span class="s1">&#39;hidden_dim&#39;</span><span class="p">:</span> <span class="mi">200</span><span class="p">,</span>
@@ -14591,7 +14217,7 @@ Epoch: 5, BCELoss: 0.6499970197677613
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[27]:</div>
+<div class="prompt input_prompt">In&nbsp;[28]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">estimator</span><span class="o">.</span><span class="n">fit</span><span class="p">({</span><span class="s1">&#39;training&#39;</span><span class="p">:</span> <span class="n">input_data</span><span class="p">})</span>
@@ -14610,41 +14236,30 @@ Epoch: 5, BCELoss: 0.6499970197677613
     <div class="prompt"></div>
 
 
-<div class="output_subarea output_stream output_stderr output_text">
-<pre>INFO:sagemaker:Creating training-job with name: sagemaker-pytorch-2019-04-20-02-09-26-251
-</pre>
-</div>
-</div>
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>2019-04-20 02:09:28 Starting - Starting the training job...
-2019-04-20 02:09:30 Starting - Launching requested ML instances......
-2019-04-20 02:10:36 Starting - Preparing the instances for training......
-2019-04-20 02:11:53 Downloading - Downloading input data..
+<pre>2019-06-20 20:45:01 Starting - Starting the training job...
+2019-06-20 20:45:03 Starting - Launching requested ML instances......
+2019-06-20 20:46:06 Starting - Preparing the instances for training......
+2019-06-20 20:47:13 Downloading - Downloading input data...
+2019-06-20 20:47:47 Training - Downloading the training image...
 <span class="ansi-red-fg">bash: cannot set terminal process group (-1): Inappropriate ioctl for device</span>
 <span class="ansi-red-fg">bash: no job control in this shell</span>
-<span class="ansi-red-fg">2019-04-20 02:12:08,680 sagemaker-containers INFO     Imported framework sagemaker_pytorch_container.training</span>
-<span class="ansi-red-fg">2019-04-20 02:12:08,683 sagemaker-containers INFO     No GPUs detected (normal if no gpus installed)</span>
-<span class="ansi-red-fg">2019-04-20 02:12:08,697 sagemaker_pytorch_container.training INFO     Block until all host DNS lookups succeed.</span>
-<span class="ansi-red-fg">2019-04-20 02:12:09,306 sagemaker_pytorch_container.training INFO     Invoking user training script.</span>
-<span class="ansi-red-fg">2019-04-20 02:12:09,588 sagemaker-containers INFO     Module train does not provide a setup.py. </span>
+<span class="ansi-red-fg">2019-06-20 20:48:21,731 sagemaker-containers INFO     Imported framework sagemaker_pytorch_container.training</span>
+<span class="ansi-red-fg">2019-06-20 20:48:21,755 sagemaker_pytorch_container.training INFO     Block until all host DNS lookups succeed.</span>
+<span class="ansi-red-fg">2019-06-20 20:48:24,763 sagemaker_pytorch_container.training INFO     Invoking user training script.</span>
+<span class="ansi-red-fg">2019-06-20 20:48:25,029 sagemaker-containers INFO     Module train does not provide a setup.py. </span>
 <span class="ansi-red-fg">Generating setup.py</span>
-<span class="ansi-red-fg">2019-04-20 02:12:09,589 sagemaker-containers INFO     Generating setup.cfg</span>
-<span class="ansi-red-fg">2019-04-20 02:12:09,589 sagemaker-containers INFO     Generating MANIFEST.in</span>
-<span class="ansi-red-fg">2019-04-20 02:12:09,589 sagemaker-containers INFO     Installing module with the following command:</span>
+<span class="ansi-red-fg">2019-06-20 20:48:25,029 sagemaker-containers INFO     Generating setup.cfg</span>
+<span class="ansi-red-fg">2019-06-20 20:48:25,029 sagemaker-containers INFO     Generating MANIFEST.in</span>
+<span class="ansi-red-fg">2019-06-20 20:48:25,030 sagemaker-containers INFO     Installing module with the following command:</span>
 <span class="ansi-red-fg">/usr/bin/python -m pip install -U . -r requirements.txt</span>
 <span class="ansi-red-fg">Processing /opt/ml/code</span>
-<span class="ansi-red-fg">Collecting pandas (from -r requirements.txt (line 1))</span>
-<span class="ansi-red-fg">  Downloading https://files.pythonhosted.org/packages/74/24/0cdbf8907e1e3bc5a8da03345c23cbed7044330bb8f73bb12e711a640a00/pandas-0.24.2-cp35-cp35m-manylinux1_x86_64.whl (10.0MB)</span>
-<span class="ansi-red-fg">Collecting numpy (from -r requirements.txt (line 2))
-  Downloading https://files.pythonhosted.org/packages/e3/18/4f013c3c3051f4e0ffbaa4bf247050d6d5e527fe9cb1907f5975b172f23f/numpy-1.16.2-cp35-cp35m-manylinux1_x86_64.whl (17.2MB)</span>
+<span class="ansi-red-fg">Collecting pandas (from -r requirements.txt (line 1))
+  Downloading https://files.pythonhosted.org/packages/74/24/0cdbf8907e1e3bc5a8da03345c23cbed7044330bb8f73bb12e711a640a00/pandas-0.24.2-cp35-cp35m-manylinux1_x86_64.whl (10.0MB)</span>
+<span class="ansi-red-fg">Collecting numpy (from -r requirements.txt (line 2))</span>
+<span class="ansi-red-fg">  Downloading https://files.pythonhosted.org/packages/bb/ef/d5a21cbc094d3f4d5b5336494dbcc9550b70c766a8345513c7c24ed18418/numpy-1.16.4-cp35-cp35m-manylinux1_x86_64.whl (17.2MB)</span>
 <span class="ansi-red-fg">Collecting nltk (from -r requirements.txt (line 3))
-  Downloading https://files.pythonhosted.org/packages/73/56/90178929712ce427ebad179f8dc46c8deef4e89d4c853092bee1efd57d05/nltk-3.4.1.zip (3.1MB)</span>
+  Downloading https://files.pythonhosted.org/packages/8d/5d/825889810b85c303c8559a3fd74d451d80cf3585a851f2103e69576bf583/nltk-3.4.3.zip (1.4MB)</span>
 <span class="ansi-red-fg">Collecting beautifulsoup4 (from -r requirements.txt (line 4))
   Downloading https://files.pythonhosted.org/packages/1d/5d/3260694a59df0ec52f8b4883f5d23b130bc237602a1411fa670eae12351e/beautifulsoup4-4.7.1-py3-none-any.whl (94kB)</span>
 <span class="ansi-red-fg">Collecting html5lib (from -r requirements.txt (line 5))
@@ -14660,121 +14275,120 @@ Epoch: 5, BCELoss: 0.6499970197677613
 <span class="ansi-red-fg">Building wheels for collected packages: nltk, train
   Running setup.py bdist_wheel for nltk: started</span>
 <span class="ansi-red-fg">  Running setup.py bdist_wheel for nltk: finished with status &#39;done&#39;
-  Stored in directory: /root/.cache/pip/wheels/97/8a/10/d646015f33c525688e91986c4544c68019b19a473cb33d3b55
+  Stored in directory: /root/.cache/pip/wheels/54/40/b7/c56ad418e6cd4d9e1e594b5e138d1ca6eec11a6ee3d464e5bb
   Running setup.py bdist_wheel for train: started
   Running setup.py bdist_wheel for train: finished with status &#39;done&#39;
-  Stored in directory: /tmp/pip-ephem-wheel-cache-0qzmn9iq/wheels/35/24/16/37574d11bf9bde50616c67372a334f94fa8356bc7164af8ca3</span>
+  Stored in directory: /tmp/pip-ephem-wheel-cache-gnk7bd6m/wheels/35/24/16/37574d11bf9bde50616c67372a334f94fa8356bc7164af8ca3</span>
 <span class="ansi-red-fg">Successfully built nltk train</span>
-<span class="ansi-red-fg">Installing collected packages: pytz, numpy, pandas, nltk, soupsieve, beautifulsoup4, webencodings, html5lib, train
+<span class="ansi-red-fg">Installing collected packages: numpy, pytz, pandas, nltk, soupsieve, beautifulsoup4, webencodings, html5lib, train
   Found existing installation: numpy 1.15.4
-    Uninstalling numpy-1.15.4:</span>
-
-2019-04-20 02:12:06 Training - Training image download completed. Training in progress.<span class="ansi-red-fg">      Successfully uninstalled numpy-1.15.4</span>
-<span class="ansi-red-fg">Successfully installed beautifulsoup4-4.7.1 html5lib-1.0.1 nltk-3.4.1 numpy-1.16.2 pandas-0.24.2 pytz-2019.1 soupsieve-1.9.1 train-1.0.0 webencodings-0.5.1</span>
-<span class="ansi-red-fg">You are using pip version 18.1, however version 19.0.3 is available.</span>
+    Uninstalling numpy-1.15.4:
+      Successfully uninstalled numpy-1.15.4</span>
+<span class="ansi-red-fg">Successfully installed beautifulsoup4-4.7.1 html5lib-1.0.1 nltk-3.4.3 numpy-1.16.4 pandas-0.24.2 pytz-2019.1 soupsieve-1.9.1 train-1.0.0 webencodings-0.5.1</span>
+<span class="ansi-red-fg">You are using pip version 18.1, however version 19.1.1 is available.</span>
 <span class="ansi-red-fg">You should consider upgrading via the &#39;pip install --upgrade pip&#39; command.</span>
-<span class="ansi-red-fg">2019-04-20 02:12:22,348 sagemaker-containers INFO     No GPUs detected (normal if no gpus installed)</span>
-<span class="ansi-red-fg">2019-04-20 02:12:22,362 sagemaker-containers INFO     Invoking user script
+<span class="ansi-red-fg">2019-06-20 20:48:36,363 sagemaker-containers INFO     Invoking user script
 </span>
 <span class="ansi-red-fg">Training Env:
 </span>
 <span class="ansi-red-fg">{
-    &#34;model_dir&#34;: &#34;/opt/ml/model&#34;,
+    &#34;output_dir&#34;: &#34;/opt/ml/output&#34;,
     &#34;hosts&#34;: [
         &#34;algo-1&#34;
     ],
-    &#34;channel_input_dirs&#34;: {
-        &#34;training&#34;: &#34;/opt/ml/input/data/training&#34;
-    },
-    &#34;output_dir&#34;: &#34;/opt/ml/output&#34;,
-    &#34;num_cpus&#34;: 4,
-    &#34;resource_config&#34;: {
-        &#34;hosts&#34;: [
-            &#34;algo-1&#34;
-        ],
-        &#34;network_interface_name&#34;: &#34;ethwe&#34;,
-        &#34;current_host&#34;: &#34;algo-1&#34;
-    },
-    &#34;module_name&#34;: &#34;train&#34;,
-    &#34;framework_module&#34;: &#34;sagemaker_pytorch_container.training:main&#34;,
-    &#34;current_host&#34;: &#34;algo-1&#34;,
-    &#34;input_dir&#34;: &#34;/opt/ml/input&#34;,
+    &#34;log_level&#34;: 20,
     &#34;hyperparameters&#34;: {
         &#34;hidden_dim&#34;: 200,
         &#34;epochs&#34;: 10
     },
-    &#34;user_entry_point&#34;: &#34;train.py&#34;,
-    &#34;output_data_dir&#34;: &#34;/opt/ml/output/data&#34;,
     &#34;additional_framework_parameters&#34;: {},
+    &#34;input_dir&#34;: &#34;/opt/ml/input&#34;,
+    &#34;num_gpus&#34;: 1,
+    &#34;output_intermediate_dir&#34;: &#34;/opt/ml/output/intermediate&#34;,
+    &#34;num_cpus&#34;: 4,
+    &#34;network_interface_name&#34;: &#34;ethwe&#34;,
+    &#34;job_name&#34;: &#34;sagemaker-pytorch-2019-06-20-20-45-00-688&#34;,
+    &#34;resource_config&#34;: {
+        &#34;network_interface_name&#34;: &#34;ethwe&#34;,
+        &#34;hosts&#34;: [
+            &#34;algo-1&#34;
+        ],
+        &#34;current_host&#34;: &#34;algo-1&#34;
+    },
     &#34;input_data_config&#34;: {
         &#34;training&#34;: {
             &#34;S3DistributionType&#34;: &#34;FullyReplicated&#34;,
-            &#34;RecordWrapperType&#34;: &#34;None&#34;,
-            &#34;TrainingInputMode&#34;: &#34;File&#34;
+            &#34;TrainingInputMode&#34;: &#34;File&#34;,
+            &#34;RecordWrapperType&#34;: &#34;None&#34;
         }
     },
-    &#34;input_config_dir&#34;: &#34;/opt/ml/input/config&#34;,
-    &#34;job_name&#34;: &#34;sagemaker-pytorch-2019-04-20-02-09-26-251&#34;,
-    &#34;module_dir&#34;: &#34;s3://sagemaker-ap-southeast-1-109586776253/sagemaker-pytorch-2019-04-20-02-09-26-251/source/sourcedir.tar.gz&#34;,
-    &#34;network_interface_name&#34;: &#34;ethwe&#34;,
-    &#34;log_level&#34;: 20,
-    &#34;num_gpus&#34;: 0,
-    &#34;output_intermediate_dir&#34;: &#34;/opt/ml/output/intermediate&#34;</span>
+    &#34;current_host&#34;: &#34;algo-1&#34;,
+    &#34;framework_module&#34;: &#34;sagemaker_pytorch_container.training:main&#34;,
+    &#34;channel_input_dirs&#34;: {
+        &#34;training&#34;: &#34;/opt/ml/input/data/training&#34;
+    },
+    &#34;output_data_dir&#34;: &#34;/opt/ml/output/data&#34;,
+    &#34;module_dir&#34;: &#34;s3://sagemaker-eu-west-1-837557618231/sagemaker-pytorch-2019-06-20-20-45-00-688/source/sourcedir.tar.gz&#34;,
+    &#34;user_entry_point&#34;: &#34;train.py&#34;,
+    &#34;module_name&#34;: &#34;train&#34;,
+    &#34;model_dir&#34;: &#34;/opt/ml/model&#34;,
+    &#34;input_config_dir&#34;: &#34;/opt/ml/input/config&#34;</span>
 <span class="ansi-red-fg">}
 </span>
 <span class="ansi-red-fg">Environment variables:
 </span>
-<span class="ansi-red-fg">SM_MODULE_DIR=s3://sagemaker-ap-southeast-1-109586776253/sagemaker-pytorch-2019-04-20-02-09-26-251/source/sourcedir.tar.gz</span>
-<span class="ansi-red-fg">SM_INPUT_CONFIG_DIR=/opt/ml/input/config</span>
-<span class="ansi-red-fg">SM_FRAMEWORK_MODULE=sagemaker_pytorch_container.training:main</span>
-<span class="ansi-red-fg">SM_CHANNELS=[&#34;training&#34;]</span>
-<span class="ansi-red-fg">SM_MODEL_DIR=/opt/ml/model</span>
-<span class="ansi-red-fg">PYTHONPATH=/usr/local/bin:/usr/lib/python35.zip:/usr/lib/python3.5:/usr/lib/python3.5/plat-x86_64-linux-gnu:/usr/lib/python3.5/lib-dynload:/usr/local/lib/python3.5/dist-packages:/usr/lib/python3/dist-packages</span>
-<span class="ansi-red-fg">SM_OUTPUT_DIR=/opt/ml/output</span>
-<span class="ansi-red-fg">SM_TRAINING_ENV={&#34;additional_framework_parameters&#34;:{},&#34;channel_input_dirs&#34;:{&#34;training&#34;:&#34;/opt/ml/input/data/training&#34;},&#34;current_host&#34;:&#34;algo-1&#34;,&#34;framework_module&#34;:&#34;sagemaker_pytorch_container.training:main&#34;,&#34;hosts&#34;:[&#34;algo-1&#34;],&#34;hyperparameters&#34;:{&#34;epochs&#34;:10,&#34;hidden_dim&#34;:200},&#34;input_config_dir&#34;:&#34;/opt/ml/input/config&#34;,&#34;input_data_config&#34;:{&#34;training&#34;:{&#34;RecordWrapperType&#34;:&#34;None&#34;,&#34;S3DistributionType&#34;:&#34;FullyReplicated&#34;,&#34;TrainingInputMode&#34;:&#34;File&#34;}},&#34;input_dir&#34;:&#34;/opt/ml/input&#34;,&#34;job_name&#34;:&#34;sagemaker-pytorch-2019-04-20-02-09-26-251&#34;,&#34;log_level&#34;:20,&#34;model_dir&#34;:&#34;/opt/ml/model&#34;,&#34;module_dir&#34;:&#34;s3://sagemaker-ap-southeast-1-109586776253/sagemaker-pytorch-2019-04-20-02-09-26-251/source/sourcedir.tar.gz&#34;,&#34;module_name&#34;:&#34;train&#34;,&#34;network_interface_name&#34;:&#34;ethwe&#34;,&#34;num_cpus&#34;:4,&#34;num_gpus&#34;:0,&#34;output_data_dir&#34;:&#34;/opt/ml/output/data&#34;,&#34;output_dir&#34;:&#34;/opt/ml/output&#34;,&#34;output_intermediate_dir&#34;:&#34;/opt/ml/output/intermediate&#34;,&#34;resource_config&#34;:{&#34;current_host&#34;:&#34;algo-1&#34;,&#34;hosts&#34;:[&#34;algo-1&#34;],&#34;network_interface_name&#34;:&#34;ethwe&#34;},&#34;user_entry_point&#34;:&#34;train.py&#34;}</span>
-<span class="ansi-red-fg">SM_HP_EPOCHS=10</span>
+<span class="ansi-red-fg">SM_TRAINING_ENV={&#34;additional_framework_parameters&#34;:{},&#34;channel_input_dirs&#34;:{&#34;training&#34;:&#34;/opt/ml/input/data/training&#34;},&#34;current_host&#34;:&#34;algo-1&#34;,&#34;framework_module&#34;:&#34;sagemaker_pytorch_container.training:main&#34;,&#34;hosts&#34;:[&#34;algo-1&#34;],&#34;hyperparameters&#34;:{&#34;epochs&#34;:10,&#34;hidden_dim&#34;:200},&#34;input_config_dir&#34;:&#34;/opt/ml/input/config&#34;,&#34;input_data_config&#34;:{&#34;training&#34;:{&#34;RecordWrapperType&#34;:&#34;None&#34;,&#34;S3DistributionType&#34;:&#34;FullyReplicated&#34;,&#34;TrainingInputMode&#34;:&#34;File&#34;}},&#34;input_dir&#34;:&#34;/opt/ml/input&#34;,&#34;job_name&#34;:&#34;sagemaker-pytorch-2019-06-20-20-45-00-688&#34;,&#34;log_level&#34;:20,&#34;model_dir&#34;:&#34;/opt/ml/model&#34;,&#34;module_dir&#34;:&#34;s3://sagemaker-eu-west-1-837557618231/sagemaker-pytorch-2019-06-20-20-45-00-688/source/sourcedir.tar.gz&#34;,&#34;module_name&#34;:&#34;train&#34;,&#34;network_interface_name&#34;:&#34;ethwe&#34;,&#34;num_cpus&#34;:4,&#34;num_gpus&#34;:1,&#34;output_data_dir&#34;:&#34;/opt/ml/output/data&#34;,&#34;output_dir&#34;:&#34;/opt/ml/output&#34;,&#34;output_intermediate_dir&#34;:&#34;/opt/ml/output/intermediate&#34;,&#34;resource_config&#34;:{&#34;current_host&#34;:&#34;algo-1&#34;,&#34;hosts&#34;:[&#34;algo-1&#34;],&#34;network_interface_name&#34;:&#34;ethwe&#34;},&#34;user_entry_point&#34;:&#34;train.py&#34;}</span>
 <span class="ansi-red-fg">SM_HP_HIDDEN_DIM=200</span>
-<span class="ansi-red-fg">SM_NUM_CPUS=4</span>
-<span class="ansi-red-fg">SM_CURRENT_HOST=algo-1</span>
-<span class="ansi-red-fg">SM_USER_ARGS=[&#34;--epochs&#34;,&#34;10&#34;,&#34;--hidden_dim&#34;,&#34;200&#34;]</span>
-<span class="ansi-red-fg">SM_FRAMEWORK_PARAMS={}</span>
-<span class="ansi-red-fg">SM_HOSTS=[&#34;algo-1&#34;]</span>
+<span class="ansi-red-fg">SM_HP_EPOCHS=10</span>
 <span class="ansi-red-fg">SM_INPUT_DATA_CONFIG={&#34;training&#34;:{&#34;RecordWrapperType&#34;:&#34;None&#34;,&#34;S3DistributionType&#34;:&#34;FullyReplicated&#34;,&#34;TrainingInputMode&#34;:&#34;File&#34;}}</span>
-<span class="ansi-red-fg">SM_LOG_LEVEL=20</span>
-<span class="ansi-red-fg">SM_INPUT_DIR=/opt/ml/input</span>
-<span class="ansi-red-fg">SM_CHANNEL_TRAINING=/opt/ml/input/data/training</span>
-<span class="ansi-red-fg">SM_NUM_GPUS=0</span>
-<span class="ansi-red-fg">SM_USER_ENTRY_POINT=train.py</span>
-<span class="ansi-red-fg">SM_OUTPUT_DATA_DIR=/opt/ml/output/data</span>
-<span class="ansi-red-fg">SM_OUTPUT_INTERMEDIATE_DIR=/opt/ml/output/intermediate</span>
+<span class="ansi-red-fg">SM_MODULE_DIR=s3://sagemaker-eu-west-1-837557618231/sagemaker-pytorch-2019-06-20-20-45-00-688/source/sourcedir.tar.gz</span>
 <span class="ansi-red-fg">SM_MODULE_NAME=train</span>
-<span class="ansi-red-fg">SM_NETWORK_INTERFACE_NAME=ethwe</span>
+<span class="ansi-red-fg">SM_OUTPUT_DATA_DIR=/opt/ml/output/data</span>
 <span class="ansi-red-fg">SM_HPS={&#34;epochs&#34;:10,&#34;hidden_dim&#34;:200}</span>
-<span class="ansi-red-fg">SM_RESOURCE_CONFIG={&#34;current_host&#34;:&#34;algo-1&#34;,&#34;hosts&#34;:[&#34;algo-1&#34;],&#34;network_interface_name&#34;:&#34;ethwe&#34;}
+<span class="ansi-red-fg">SM_RESOURCE_CONFIG={&#34;current_host&#34;:&#34;algo-1&#34;,&#34;hosts&#34;:[&#34;algo-1&#34;],&#34;network_interface_name&#34;:&#34;ethwe&#34;}</span>
+<span class="ansi-red-fg">SM_FRAMEWORK_MODULE=sagemaker_pytorch_container.training:main</span>
+<span class="ansi-red-fg">SM_CURRENT_HOST=algo-1</span>
+<span class="ansi-red-fg">SM_NETWORK_INTERFACE_NAME=ethwe</span>
+<span class="ansi-red-fg">SM_USER_ENTRY_POINT=train.py</span>
+<span class="ansi-red-fg">PYTHONPATH=/usr/local/bin:/usr/lib/python35.zip:/usr/lib/python3.5:/usr/lib/python3.5/plat-x86_64-linux-gnu:/usr/lib/python3.5/lib-dynload:/usr/local/lib/python3.5/dist-packages:/usr/lib/python3/dist-packages</span>
+<span class="ansi-red-fg">SM_OUTPUT_INTERMEDIATE_DIR=/opt/ml/output/intermediate</span>
+<span class="ansi-red-fg">SM_MODEL_DIR=/opt/ml/model</span>
+<span class="ansi-red-fg">SM_CHANNEL_TRAINING=/opt/ml/input/data/training</span>
+<span class="ansi-red-fg">SM_NUM_CPUS=4</span>
+<span class="ansi-red-fg">SM_CHANNELS=[&#34;training&#34;]</span>
+<span class="ansi-red-fg">SM_INPUT_CONFIG_DIR=/opt/ml/input/config</span>
+<span class="ansi-red-fg">SM_HOSTS=[&#34;algo-1&#34;]</span>
+<span class="ansi-red-fg">SM_LOG_LEVEL=20</span>
+<span class="ansi-red-fg">SM_USER_ARGS=[&#34;--epochs&#34;,&#34;10&#34;,&#34;--hidden_dim&#34;,&#34;200&#34;]</span>
+<span class="ansi-red-fg">SM_OUTPUT_DIR=/opt/ml/output</span>
+<span class="ansi-red-fg">SM_INPUT_DIR=/opt/ml/input</span>
+<span class="ansi-red-fg">SM_NUM_GPUS=1</span>
+<span class="ansi-red-fg">SM_FRAMEWORK_PARAMS={}
 </span>
 <span class="ansi-red-fg">Invoking script with the following command:
 </span>
 <span class="ansi-red-fg">/usr/bin/python -m train --epochs 10 --hidden_dim 200
 
 </span>
-<span class="ansi-red-fg">Using device cpu.</span>
+<span class="ansi-red-fg">Using device cuda.</span>
 <span class="ansi-red-fg">Get train data loader.</span>
 <span class="ansi-red-fg">Model loaded with embedding_dim 32, hidden_dim 200, vocab_size 5000.</span>
-<span class="ansi-red-fg">Epoch: 1, BCELoss: 0.6732253626901277</span>
-<span class="ansi-red-fg">Epoch: 2, BCELoss: 0.620229498464234</span>
-<span class="ansi-red-fg">Epoch: 3, BCELoss: 0.5224058865284433</span>
-<span class="ansi-red-fg">Epoch: 4, BCELoss: 0.4389368526789607</span>
-<span class="ansi-red-fg">Epoch: 5, BCELoss: 0.3910524182173671</span>
-<span class="ansi-red-fg">Epoch: 6, BCELoss: 0.36585044678376644</span>
-<span class="ansi-red-fg">Epoch: 7, BCELoss: 0.35316711420915564</span>
-<span class="ansi-red-fg">Epoch: 8, BCELoss: 0.30969719558346026</span>
-<span class="ansi-red-fg">Epoch: 9, BCELoss: 0.28940737490751306</span>
-<span class="ansi-red-fg">Epoch: 10, BCELoss: 0.28051277934288493</span>
-<span class="ansi-red-fg">2019-04-20 04:01:18,098 sagemaker-containers INFO     Reporting training SUCCESS</span>
 
-2019-04-20 04:01:25 Uploading - Uploading generated training model
-2019-04-20 04:01:25 Completed - Training job completed
-Billable seconds: 6573
+2019-06-20 20:48:56 Training - Training image download completed. Training in progress.<span class="ansi-red-fg">Epoch: 1, BCELoss: 0.6740532006536212</span>
+<span class="ansi-red-fg">Epoch: 2, BCELoss: 0.5991074102265495</span>
+<span class="ansi-red-fg">Epoch: 3, BCELoss: 0.5234024032038085</span>
+<span class="ansi-red-fg">Epoch: 4, BCELoss: 0.45292376924534233</span>
+<span class="ansi-red-fg">Epoch: 5, BCELoss: 0.3909908417536288</span>
+<span class="ansi-red-fg">Epoch: 6, BCELoss: 0.3566843769988235</span>
+<span class="ansi-red-fg">Epoch: 7, BCELoss: 0.3435358611904845</span>
+<span class="ansi-red-fg">Epoch: 8, BCELoss: 0.3379903557349224</span>
+<span class="ansi-red-fg">Epoch: 9, BCELoss: 0.3037201214809807</span>
+
+2019-06-20 20:51:34 Uploading - Uploading generated training model<span class="ansi-red-fg">Epoch: 10, BCELoss: 0.2763723241431372</span>
+<span class="ansi-red-fg">2019-06-20 20:51:33,134 sagemaker-containers INFO     Reporting training SUCCESS</span>
+
+2019-06-20 20:51:39 Completed - Training job completed
+Billable seconds: 267
 </pre>
 </div>
 </div>
@@ -14791,20 +14405,17 @@ Billable seconds: 6573
 <p>There is one thing that we need to provide, however, and that is a function which loads the saved model. This function must be called <code>model_fn()</code> and takes as its only parameter a path to the directory where the model artifacts are stored. This function must also be present in the python file which we specified as the entry point. In our case the model loading function has been provided and so no changes need to be made.</p>
 <p><strong>NOTE</strong>: When the built-in inference code is run it must import the <code>model_fn()</code> method from the <code>train.py</code> file. This is why the training code is wrapped in a main guard ( ie, <code>if __name__ == '__main__':</code> )</p>
 <p>Since we don't need to change anything in the code that was uploaded during training, we can simply deploy the current model as-is.</p>
-<p><strong>NOTE:</strong> When deploying a model you are asking SageMaker to launch an compute instance that will wait for data to be sent to it. As a result, this compute instance will continue to run until <em>you</em> shut it down. This is important to know since the cost of a deployed endpoint depends on how long it has been running for.</p>
-<p>In other words <strong>If you are no longer using a deployed endpoint, shut it down!</strong></p>
-<p><strong>TODO:</strong> Deploy the trained model.</p>
 
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[28]:</div>
+<div class="prompt input_prompt">In&nbsp;[29]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># TODO: Deploy the trained model</span>
-<span class="n">predictor</span> <span class="o">=</span> <span class="n">estimator</span><span class="o">.</span><span class="n">deploy</span><span class="p">(</span><span class="n">initial_instance_count</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">instance_type</span><span class="o">=</span><span class="s1">&#39;ml.m4.xlarge&#39;</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#  Deploy the trained model</span>
+<span class="n">predictor</span> <span class="o">=</span> <span class="n">estimator</span><span class="o">.</span><span class="n">deploy</span><span class="p">(</span><span class="n">initial_instance_count</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">instance_type</span><span class="o">=</span><span class="s1">&#39;ml.p2.xlarge&#39;</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -14820,20 +14431,8 @@ Billable seconds: 6573
     <div class="prompt"></div>
 
 
-<div class="output_subarea output_stream output_stderr output_text">
-<pre>INFO:sagemaker:Creating model with name: sagemaker-pytorch-2019-04-20-02-09-26-251
-INFO:sagemaker:Creating endpoint with name sagemaker-pytorch-2019-04-20-02-09-26-251
-</pre>
-</div>
-</div>
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>----------------------------------------------------------------------------------------!</pre>
+<pre>---------------------------------------------------------------------------------------------------!</pre>
 </div>
 </div>
 
@@ -14851,7 +14450,7 @@ INFO:sagemaker:Creating endpoint with name sagemaker-pytorch-2019-04-20-02-09-26
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[29]:</div>
+<div class="prompt input_prompt">In&nbsp;[30]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">test_X</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">test_X_len</span><span class="p">),</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">test_X</span><span class="p">)],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
@@ -14864,7 +14463,7 @@ INFO:sagemaker:Creating endpoint with name sagemaker-pytorch-2019-04-20-02-09-26
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[30]:</div>
+<div class="prompt input_prompt">In&nbsp;[31]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># We split the data into chunks and send each chunk seperately, accumulating the results.</span>
@@ -14885,7 +14484,7 @@ INFO:sagemaker:Creating endpoint with name sagemaker-pytorch-2019-04-20-02-09-26
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[31]:</div>
+<div class="prompt input_prompt">In&nbsp;[32]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">predictions</span> <span class="o">=</span> <span class="n">predict</span><span class="p">(</span><span class="n">test_X</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
@@ -14899,7 +14498,7 @@ INFO:sagemaker:Creating endpoint with name sagemaker-pytorch-2019-04-20-02-09-26
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[32]:</div>
+<div class="prompt input_prompt">In&nbsp;[33]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="k">import</span> <span class="n">accuracy_score</span>
@@ -14916,13 +14515,13 @@ INFO:sagemaker:Creating endpoint with name sagemaker-pytorch-2019-04-20-02-09-26
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[32]:</div>
+    <div class="prompt output_prompt">Out[33]:</div>
 
 
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>0.85012</pre>
+<pre>0.8478</pre>
 </div>
 
 </div>
@@ -14934,30 +14533,14 @@ INFO:sagemaker:Creating endpoint with name sagemaker-pytorch-2019-04-20-02-09-26
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>Question:</strong> How does this model compare to the XGBoost model you created earlier? Why might these two models perform differently on this dataset? Which do <em>you</em> think is better for sentiment analysis?</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>Answer:</strong> Accuracy of both the models does not change by much so not much difference</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="(TODO)-More-testing">(TODO) More testing<a class="anchor-link" href="#(TODO)-More-testing">&#182;</a></h3><p>We now have a trained model which has been deployed and which we can send processed reviews to and which returns the predicted sentiment. However, ultimately we would like to be able to send our model an unprocessed review. That is, we would like to send the review itself as a string. For example, suppose we wish to send the following review to our model.</p>
+<h3 id="More-testing">More testing<a class="anchor-link" href="#More-testing">&#182;</a></h3><p>We now have a trained model which has been deployed and which we can send processed reviews to and which returns the predicted sentiment. However, ultimately we would like to be able to send our model an unprocessed review. That is, we would like to send the review itself as a string. For example, suppose we wish to send the following review to our model.</p>
 
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[33]:</div>
+<div class="prompt input_prompt">In&nbsp;[34]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">test_review</span> <span class="o">=</span> <span class="s1">&#39;The simplest pleasures in life are the best, and this film is one of them. Combining a rather basic storyline of love and adventure this movie transcends the usual weekend fair with wit and unmitigated charm.&#39;</span>
@@ -14978,17 +14561,17 @@ INFO:sagemaker:Creating endpoint with name sagemaker-pytorch-2019-04-20-02-09-26
 <li>Encoded the review as a sequence of integers using <code>word_dict</code></li>
 </ul>
 <p>In order process the review we will need to repeat these two steps.</p>
-<p><strong>TODO</strong>: Using the <code>review_to_words</code> and <code>convert_and_pad</code> methods from section one, convert <code>test_review</code> into a numpy array <code>test_data</code> suitable to send to our model. Remember that our model expects input of the form <code>review_length, review[500]</code>.</p>
+<p>Using the <code>review_to_words</code> and <code>convert_and_pad</code> methods from section one, convert <code>test_review</code> into a numpy array <code>test_data</code> suitable to send to our model. Remember that our model expects input of the form <code>review_length, review[500]</code>.</p>
 
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[34]:</div>
+<div class="prompt input_prompt">In&nbsp;[35]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># TODO: Convert test_review into a form usable by the model and save the results in test_data</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Convert test_review into a form usable by the model and save the results in test_data</span>
 <span class="n">test_data_review_to_words</span> <span class="o">=</span> <span class="n">review_to_words</span><span class="p">(</span><span class="n">test_review</span><span class="p">)</span>
 <span class="n">test_data</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">convert_and_pad</span><span class="p">(</span><span class="n">word_dict</span><span class="p">,</span> <span class="n">test_data_review_to_words</span><span class="p">)[</span><span class="mi">0</span><span class="p">])]</span>
 </pre></div>
@@ -15008,7 +14591,7 @@ INFO:sagemaker:Creating endpoint with name sagemaker-pytorch-2019-04-20-02-09-26
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[35]:</div>
+<div class="prompt input_prompt">In&nbsp;[36]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">predictor</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">test_data</span><span class="p">)</span>
@@ -15024,13 +14607,13 @@ INFO:sagemaker:Creating endpoint with name sagemaker-pytorch-2019-04-20-02-09-26
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[35]:</div>
+    <div class="prompt output_prompt">Out[36]:</div>
 
 
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>array(0.7747824, dtype=float32)</pre>
+<pre>array(0.64280885, dtype=float32)</pre>
 </div>
 
 </div>
@@ -15057,31 +14640,13 @@ INFO:sagemaker:Creating endpoint with name sagemaker-pytorch-2019-04-20-02-09-26
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[36]:</div>
+<div class="prompt input_prompt">In&nbsp;[37]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">estimator</span><span class="o">.</span><span class="n">delete_endpoint</span><span class="p">()</span>
 </pre></div>
 
     </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stderr output_text">
-<pre>INFO:sagemaker:Deleting endpoint with name: sagemaker-pytorch-2019-04-20-02-09-26-251
-</pre>
-</div>
-</div>
-
 </div>
 </div>
 
@@ -15100,14 +14665,14 @@ INFO:sagemaker:Creating endpoint with name sagemaker-pytorch-2019-04-20-02-09-26
 <li><code>predict_fn</code>: The heart of the inference script, this is where the actual prediction is done and is the function which you will need to complete.</li>
 </ul>
 <p>For the simple website that we are constructing during this project, the <code>input_fn</code> and <code>output_fn</code> methods are relatively straightforward. We only require being able to accept a string as input and we expect to return a single value as output. You might imagine though that in a more complex application the input or output may be image data or some other binary data which would require some effort to serialize.</p>
-<h3 id="(TODO)-Writing-inference-code">(TODO) Writing inference code<a class="anchor-link" href="#(TODO)-Writing-inference-code">&#182;</a></h3><p>Before writing our custom inference code, we will begin by taking a look at the code which has been provided.</p>
+<h3 id="Writing-inference-code">Writing inference code<a class="anchor-link" href="#Writing-inference-code">&#182;</a></h3><p>Before writing our custom inference code, we will begin by taking a look at the code which has been provided.</p>
 
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[37]:</div>
+<div class="prompt input_prompt">In&nbsp;[49]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>pygmentize serve/predict.py
@@ -15127,7 +14692,8 @@ INFO:sagemaker:Creating endpoint with name sagemaker-pytorch-2019-04-20-02-09-26
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre><span class="ansi-blue-fg">import</span> <span class="ansi-cyan-fg ansi-underline">argparse</span>
+<pre><span class="ansi-white-fg"># %load serve/predict.py</span>
+<span class="ansi-blue-fg">import</span> <span class="ansi-cyan-fg ansi-underline">argparse</span>
 <span class="ansi-blue-fg">import</span> <span class="ansi-cyan-fg ansi-underline">json</span>
 <span class="ansi-blue-fg">import</span> <span class="ansi-cyan-fg ansi-underline">os</span>
 <span class="ansi-blue-fg">import</span> <span class="ansi-cyan-fg ansi-underline">pickle</span>
@@ -15199,14 +14765,13 @@ INFO:sagemaker:Creating endpoint with name sagemaker-pytorch-2019-04-20-02-09-26
     <span class="ansi-white-fg">#         data_X   - A sequence of length 500 which represents the converted review</span>
     <span class="ansi-white-fg">#         data_len - The length of the review</span>
 
-    words = review_to_words(input_data)
-    data_X, data_len = convert_and_pad(model.word_dict, words)
+    data_X , data_len = convert_and_pad(model.word_dict, review_to_words(input_data), <span class="ansi-blue-fg">500</span>)
 
     <span class="ansi-white-fg"># Using data_X and data_len we construct an appropriate input tensor. Remember</span>
     <span class="ansi-white-fg"># that our model expects input data of the form &#39;len, review[500]&#39;.</span>
     data_pack = np.hstack((data_len, data_X))
     data_pack = data_pack.reshape(<span class="ansi-blue-fg">1</span>, -<span class="ansi-blue-fg">1</span>)
-    
+
     data = torch.from_numpy(data_pack)
     data = data.to(device)
 
@@ -15215,10 +14780,8 @@ INFO:sagemaker:Creating endpoint with name sagemaker-pytorch-2019-04-20-02-09-26
 
     <span class="ansi-white-fg"># TODO: Compute the result of applying the model to the input data. The variable `result` should</span>
     <span class="ansi-white-fg">#       be a numpy array which contains a single integer which is either 1 or 0</span>
-    <span class="ansi-blue-fg">with</span> torch.no_grad():
-        output = model.forward(data)
-
-    result = np.round(output.numpy())
+    result = model(data)
+    result = <span class="ansi-cyan-fg">round</span>(result.item())
 
     <span class="ansi-blue-fg">return</span> result
 </pre>
@@ -15233,7 +14796,6 @@ INFO:sagemaker:Creating endpoint with name sagemaker-pytorch-2019-04-20-02-09-26
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>As mentioned earlier, the <code>model_fn</code> method is the same as the one provided in the training code and the <code>input_fn</code> and <code>output_fn</code> methods are very simple and your task will be to complete the <code>predict_fn</code> method. Make sure that you save the completed file as <code>predict.py</code> in the <code>serve</code> directory.</p>
-<p><strong>TODO</strong>: Complete the <code>predict_fn()</code> method in the <code>serve/predict.py</code> file.</p>
 
 </div>
 </div>
@@ -15249,7 +14811,7 @@ INFO:sagemaker:Creating endpoint with name sagemaker-pytorch-2019-04-20-02-09-26
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[38]:</div>
+<div class="prompt input_prompt">In&nbsp;[50]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sagemaker.predictor</span> <span class="k">import</span> <span class="n">RealTimePredictor</span>
@@ -15265,7 +14827,7 @@ INFO:sagemaker:Creating endpoint with name sagemaker-pytorch-2019-04-20-02-09-26
                      <span class="n">entry_point</span><span class="o">=</span><span class="s1">&#39;predict.py&#39;</span><span class="p">,</span>
                      <span class="n">source_dir</span><span class="o">=</span><span class="s1">&#39;serve&#39;</span><span class="p">,</span>
                      <span class="n">predictor_cls</span><span class="o">=</span><span class="n">StringPredictor</span><span class="p">)</span>
-<span class="n">predictor</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">deploy</span><span class="p">(</span><span class="n">initial_instance_count</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">instance_type</span><span class="o">=</span><span class="s1">&#39;ml.m4.xlarge&#39;</span><span class="p">)</span>
+<span class="n">predictor</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">deploy</span><span class="p">(</span><span class="n">initial_instance_count</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">instance_type</span><span class="o">=</span><span class="s1">&#39;ml.p2.xlarge&#39;</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -15281,20 +14843,8 @@ INFO:sagemaker:Creating endpoint with name sagemaker-pytorch-2019-04-20-02-09-26
     <div class="prompt"></div>
 
 
-<div class="output_subarea output_stream output_stderr output_text">
-<pre>INFO:sagemaker:Creating model with name: sagemaker-pytorch-2019-04-20-04-13-16-614
-INFO:sagemaker:Creating endpoint with name sagemaker-pytorch-2019-04-20-04-13-16-614
-</pre>
-</div>
-</div>
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>---------------------------------------------------------------------------!</pre>
+<pre>-----------------------------------------------------------------------------------------------------!</pre>
 </div>
 </div>
 
@@ -15312,7 +14862,7 @@ INFO:sagemaker:Creating endpoint with name sagemaker-pytorch-2019-04-20-04-13-16
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[39]:</div>
+<div class="prompt input_prompt">In&nbsp;[51]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">glob</span>
@@ -15361,7 +14911,7 @@ INFO:sagemaker:Creating endpoint with name sagemaker-pytorch-2019-04-20-04-13-16
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[40]:</div>
+<div class="prompt input_prompt">In&nbsp;[52]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">ground</span><span class="p">,</span> <span class="n">results</span> <span class="o">=</span> <span class="n">test_reviews</span><span class="p">()</span>
@@ -15393,7 +14943,7 @@ Starting  neg  files
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[41]:</div>
+<div class="prompt input_prompt">In&nbsp;[53]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="k">import</span> <span class="n">accuracy_score</span>
@@ -15410,13 +14960,13 @@ Starting  neg  files
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[41]:</div>
+    <div class="prompt output_prompt">Out[53]:</div>
 
 
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>0.842</pre>
+<pre>0.856</pre>
 </div>
 
 </div>
@@ -15435,7 +14985,7 @@ Starting  neg  files
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[42]:</div>
+<div class="prompt input_prompt">In&nbsp;[54]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">predictor</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">test_review</span><span class="p">)</span>
@@ -15451,13 +15001,13 @@ Starting  neg  files
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[42]:</div>
+    <div class="prompt output_prompt">Out[54]:</div>
 
 
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>b&#39;1.0&#39;</pre>
+<pre>b&#39;1&#39;</pre>
 </div>
 
 </div>
@@ -15477,7 +15027,7 @@ Starting  neg  files
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Step-7-(again):-Use-the-model-for-the-web-app">Step 7 (again): Use the model for the web app<a class="anchor-link" href="#Step-7-(again):-Use-the-model-for-the-web-app">&#182;</a></h2><blockquote><p><strong>TODO:</strong> This entire section and the next contain tasks for you to complete, mostly using the AWS console.</p>
+<h2 id="Step-7-(again):-Use-the-model-for-the-web-app">Step 7 (again): Use the model for the web app<a class="anchor-link" href="#Step-7-(again):-Use-the-model-for-the-web-app">&#182;</a></h2><blockquote><p><strong>Note:</strong> This entire section and the next need to complete, mostly using the AWS console.</p>
 </blockquote>
 <p>So far we have been accessing our model endpoint by constructing a predictor object which uses the endpoint and then just using the predictor object to perform inference. What if we wanted to create a web app which accessed our model? The way things are set up currently makes that not possible since in order to access a SageMaker endpoint the app would first have to authenticate with AWS using an IAM role which included access to SageMaker endpoints. However, there is an easier way! We just need to use some additional AWS services.</p>
 <p><img src="Web App Diagram.svg"></p>
@@ -15515,14 +15065,14 @@ Starting  neg  files
         <span class="s1">&#39;body&#39;</span> <span class="p">:</span> <span class="n">result</span>
     <span class="p">}</span>
 </pre></div>
-<p>Once you have copy and pasted the code above into the Lambda code editor, replace the <code>**ENDPOINT NAME HERE**</code> portion with the name of the endpoint that we deployed earlier. You can determine the name of the endpoint using the code cell below.</p>
+<p>Once we have copy and pasted the code above into the Lambda code editor, replace the <code>**ENDPOINT NAME HERE**</code> portion with the name of the endpoint that we deployed earlier. We can determine the name of the endpoint using the code cell below.</p>
 
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[43]:</div>
+<div class="prompt input_prompt">In&nbsp;[55]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">predictor</span><span class="o">.</span><span class="n">endpoint</span>
@@ -15538,13 +15088,13 @@ Starting  neg  files
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[43]:</div>
+    <div class="prompt output_prompt">Out[55]:</div>
 
 
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>&#39;sagemaker-pytorch-2019-04-20-04-13-16-614&#39;</pre>
+<pre>&#39;sagemaker-pytorch-2019-06-20-21-34-43-844&#39;</pre>
 </div>
 
 </div>
@@ -15579,25 +15129,6 @@ Starting  neg  files
 <p>If you'd like to go further, you can host this html file anywhere you'd like, for example using github or hosting a static site on Amazon's S3. Once you have done this you can share the link with anyone you'd like and have them play with it too!</p>
 <blockquote><p><strong>Important Note</strong> In order for the web app to communicate with the SageMaker endpoint, the endpoint has to actually be deployed and running. This means that you are paying for it. Make sure that the endpoint is running when you want to use the web app but that you shut it down when you don't need it, otherwise you will end up with a surprisingly large AWS bill.</p>
 </blockquote>
-<p><strong>TODO:</strong> Make sure that you include the edited <code>index.html</code> file in your project submission.</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>Now that your web app is working, trying playing around with it and see how well it works.</p>
-<p><strong>Question</strong>: Give an example of a review that you entered into your web app. What was the predicted sentiment of your example review?</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>Answer:</strong> The scariest movie I watched in my childhood was definitely "Alien". As I grew up, I watched it several more times, and although I still love it.</p>
-<p>Predicted sentiment was postive and its perfect :). The model did fail for small sentence words but we can improve a lot by fine tuning the model</p>
 
 </div>
 </div>
