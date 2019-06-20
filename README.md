@@ -1,4 +1,5 @@
-# SageMaker Deployment Project
+# SageMaker Deployment Project 
+Here are my code repo for sentiment analysis project from Udacity's Deep Learning nanodegree 
 
 Deployed webpage https://sand47.github.io/review-classification/ <br><br>
 The notebook and Python files provided here, once completed, result in a simple web app which interacts with a deployed recurrent neural network performing sentiment analysis on movie reviews. 
