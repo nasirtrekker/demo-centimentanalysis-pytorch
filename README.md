@@ -2,8 +2,10 @@
 Here are my code repo for sentiment analysis project from Udacity's Deep Learning nanodegree 
 
 
-The notebook and Python files provided here, once completed, result in a simple web app which interacts with a deployed recurrent neural network performing sentiment analysis on movie reviews.
-Test Sentiment: Open the index.html or page.html file in browser. Put your movie sentiment in the box and get the review results (positive/negative). 
+The notebook and Python files provided here, once completed, result in a simple web app which interacts with a deployed recurrent neural network performing sentiment analysis on movie reviews.To get sentiment  click https://nasirtrekker.github.io/demo-centimentanalysis-pytorch/ and 
+
+
+Test Sentiment: Open the index.html or page.html file in browser. Put your movie review in the box to get the results (positive/negative). 
 
 # General Outline
 The general outline for SageMaker projects using a notebook instance.
